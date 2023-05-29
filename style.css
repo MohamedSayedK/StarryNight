@@ -1,8 +1,45 @@
 :root {
     --bg-color: rgb(20, 20, 20);
-    --card-color: rgb(23, 23, 23);
+    --project-color: rgb(23, 23, 23);
+
+    --fs-small: 20px;
+    --fs-medium: 40px;
+    --fs-large: 80px;
+
+    --fw-regular: 400;
+    --fw-bold: 700;
+    --fw-extra-bold: 900;
+
+  }
 
 
+
+  .fs-20{
+    font-size: var(--fs-small);
+  }
+
+  .fs-40{
+    font-size: var(--fs-medium);
+  }
+
+  .fs-80{
+    font-size: var(--fs-large);
+  }
+
+  .fw-regular{
+    font-weight: var(--fw-regular);
+  }
+
+  .fw-bold{
+    font-weight: var(--fw-bold) !important;
+  }
+
+  .fw-extra-bold{
+    font-weight: var(--fw-extra-bold);
+  }
+
+  .decorative-number{
+    margin-right: 0.3em;
   }
 
   body{
@@ -14,6 +51,10 @@
 
   a{
     cursor: url(http://www.rw-designer.com/cursor-extern.php?id=108857), auto;
+  }
+
+  .container{
+    min-height: 100vh;
   }
 
 
@@ -48,11 +89,6 @@
     }
   }
 
-  .screen-overall{
-    z-index: 10;
-    position: inherit;
-  }
-
   .screen{
     border: 3px solid rgb(33 150 243 );
     box-shadow: 0px 0px 15px 0px rgb(33 150 243);
@@ -71,6 +107,18 @@
     filter: sepia(100%) hue-rotate(160deg);
     opacity: 0.7;
     animation: pan-image 15s infinite linear;
+    position: absolute;
+  }
+
+  .screen > .profile-screen-background-img{
+    background-image: url(profile.png);
+    height: 100%;
+    width: 100%;
+    background-size: 300%;
+    background-position: center top;
+    background-size: cover;
+    filter: sepia(100%) hue-rotate(160deg);
+    opacity: 0.7;
     position: absolute;
   }
 
@@ -266,8 +314,272 @@
     background-color: white;
 }
 
-.about{
+.introduction{
   color: white;
-  font-size: 2em;
+  position: relative;
 }
 
+span{
+  color: rgb(0, 124, 225);
+}
+
+.section-title{
+  color: white;
+}
+
+
+.introduction  p{
+  opacity: 0.9 !important;
+  color: white;
+}
+
+
+.about{
+  color: white;
+}
+
+.divider{
+  border: 3px solid rgb(0, 124, 225);
+  box-shadow: 0px 0px 15px 0px rgb(33 150 243);
+  border-radius: 10px;
+  opacity: 1;
+}
+
+
+#waves {
+  position: absolute;
+  z-index: 20;
+  top: 0;
+  left: 0;
+}
+
+.projects {
+  flex-wrap: wrap;
+  gap: 8px;  
+
+}
+
+.projects:hover > .project::after {
+  opacity: 1;
+}
+
+.project {
+  background-color: rgba(0, 143, 255, 0.1);
+  cursor: url(http://www.rw-designer.com/cursor-extern.php?id=108857), auto;
+  border-radius: 10px;
+  display: flex;
+  height: 260px;
+  flex-direction: column;
+  position: relative;
+  transition: 300ms all ease-in;
+}
+
+.project:hover{
+  border: 1px solid rgb(0, 124, 225);
+  box-shadow: 0px 0px 15px 0px rgb(33 150 243 / 0.5);
+  transition: 300ms all ease-in;
+}
+
+.project:hover::before {
+  opacity: 1;
+}
+
+.project::before,
+.project::after {
+  border-radius: inherit;
+  content: "";
+  height: 100%;
+  left: 0px;
+  opacity: 0;
+  position: absolute;
+  top: 0px;
+  transition: opacity 500ms;
+  width: 100%;
+}
+
+.project::before {
+  background: radial-gradient(
+    800px circle at var(--mouse-x) var(--mouse-y), 
+    rgba(0, 124, 255, 0.06),
+    transparent 40%
+  );
+  z-index: 3;
+
+}
+
+.project::after {  
+  background: radial-gradient(
+    600px circle at var(--mouse-x) var(--mouse-y), 
+    rgba(0, 124, 255, 0.4),
+    transparent 40%
+  );
+  z-index: 1;
+}
+
+.project > .project-content {
+  background-color: var(--project-color);
+  border-radius: inherit;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  inset: 1px;
+  padding: 10px;
+  position: absolute;
+  z-index: 2;
+}
+
+
+
+.project-image > i {
+  font-size: 6em;
+  opacity: 0.25;
+}
+
+.project-info-wrapper {
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-start;
+  padding: 0px 20px;
+}
+
+.project-info {
+  align-items: flex-start;
+  display: flex;
+  gap: 10px;
+}
+
+
+
+.project-info-title > h3 {
+  font-size: 2em;
+  line-height: 20px;
+  color: rgb(0, 124, 225);
+  transition: 200ms text-shadow ease-in;
+  font-weight: 700;
+}
+
+.project-info-title > h4 {
+  font-size: 1em;
+  margin-top: 8px;
+  color: white;
+  opacity: 0.6;
+  font-weight: 400;
+}
+
+.projects .col-lg-3{
+  padding-inline:0px ;
+}
+
+.project:hover .project-info-title > h3{
+  text-shadow: rgb(0, 124, 225) 1px 0 10px,
+               rgb(0, 124, 225) 1px 0 20px,
+               rgb(0, 124, 225) 1px 0 30px;
+  transition: 200ms text-shadow ease-in;
+}
+
+
+.get-in-touch{
+  color: white;
+}
+
+.socials{
+  display: flex;
+  gap: 2em;
+}
+
+.socials > div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgb(0, 124, 225);
+  box-shadow: 0px 0px 15px 0px rgb(33 150 243 / 0.5);
+  width: 40%;
+  margin-left: auto;
+  border-radius: 16px;
+  cursor: url(http://www.rw-designer.com/cursor-extern.php?id=108857), auto;
+  transition: 500ms box-shadow ease-in;
+}
+
+.socials > div:hover{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgb(0, 124, 225);
+  box-shadow: 0px 0px 30px 0px rgb(33 150 243 / 0.5);
+  width: 40%;
+  margin-left: auto;
+  border-radius: 16px;
+  cursor: url(http://www.rw-designer.com/cursor-extern.php?id=108857), auto;
+  transition: 200ms box-shadow ease-in;
+}
+
+.socials > div > svg{
+  height: 5em;
+  width: 5em;
+  filter: drop-shadow(0px 0px 10px rgb(0 124 255 / 5));
+}
+
+
+.divider-last{
+  border: 3px solid rgb(0, 124, 225);
+  box-shadow: 0px 0px 15px 0px rgb(33 150 243);
+  border-radius: 10px;
+  opacity: 1;
+  animation: flicker 4s linear infinite ;
+}
+
+
+
+@keyframes flicker {
+  0% {
+    opacity:0.1;
+
+  }
+  
+  2% {
+    opacity:1;
+
+  }
+  8% {
+
+  }
+  9% {
+    opacity:1;
+
+  }
+  12% {
+    opacity:0.1;
+
+  }
+  20% {
+    opacity:1;
+ }
+  25% {
+    opacity:0.3;
+
+  }
+  30% {
+    opacity:1;
+
+  }
+  
+  70% {
+    opacity:0.7;
+
+  }
+  
+  72% {
+    opacity:0.2;
+
+  }
+  
+  77% {
+    opacity:.9;
+
+  }
+  100% {
+    opacity:.9;
+
+  }
+}
